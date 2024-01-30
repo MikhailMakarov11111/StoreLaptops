@@ -71,7 +71,12 @@ public class LaptopClass {
 
     @Override
     public String toString() {
-        return "";
+        return "Наименование ноутбука: " + name + 
+                "\n Объем опретивной памяти: " + ram +
+                "\n Объем жесткого диска: " + harddisk + 
+                "\n Операционная система: " + OS +
+                "\n Цвет корпуса: " + color +
+                "\n Модель видеокарты: " + videoCard;
     }
 
     @Override
@@ -81,7 +86,8 @@ public class LaptopClass {
         if (obj == null || getClass() != obj.getClass())
             return false;
         LaptopClass laptop = (LaptopClass) obj;
-        return Objects.equals(name, laptop.name) && ram == laptop.ram && harddisk == laptop.harddisk && Objects.equals(OS, laptop.OS) && Objects.equals(color, laptop.color)
+        return Objects.equals(name, laptop.name) && ram == laptop.ram && harddisk == laptop.harddisk
+                && Objects.equals(OS, laptop.OS) && Objects.equals(color, laptop.color)
                 && Objects.equals(videoCard, laptop.videoCard);
     }
 
