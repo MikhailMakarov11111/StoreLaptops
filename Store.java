@@ -27,6 +27,7 @@ public class Store {
         Set<LaptopClass> laptops = new HashSet<>(
                 Arrays.asList(laptopOne, laptopTwo, laptopThree, laptopFour, laptopFive, laptopSix, laptopSeven,
                         laptopEight));
+        filter(laptops);
 
     }
 
@@ -44,7 +45,7 @@ public class Store {
                     int ramGB = Integer.valueOf(scanner.nextLine());
                     filtrLaptop.setRam(ramGB);
                     System.out.println(filtrLaptop);
-                    System.out.println("Введите следующий параметр");
+                    System.out.println("Выберите следующий параметр или выведите результат поиска (цифра 9)");
                     command = scanner.nextLine();
                     break;
                 case "2":
@@ -52,7 +53,7 @@ public class Store {
                     int harddiskGB = Integer.valueOf(scanner.nextLine());
                     filtrLaptop.setHarddisk(harddiskGB);
                     System.out.println(filtrLaptop);
-                    System.out.println("Введите следующий параметр");
+                    System.out.println("Выберите следующий параметр или выведите результат поиска (цифра 9)");
                     command = scanner.nextLine();
                     break;
                 case "3":
@@ -60,7 +61,7 @@ public class Store {
                     String operSystem = scanner.nextLine();
                     filtrLaptop.setOS(operSystem);
                     System.out.println(filtrLaptop);
-                    System.out.println("Введите следующий параметр");
+                    System.out.println("Выберите следующий параметр или выведите результат поиска (цифра 9)");
                     command = scanner.nextLine();
                     break;
                 case "4":
@@ -68,7 +69,7 @@ public class Store {
                     String colorPalitr = scanner.nextLine();
                     filtrLaptop.setColor(colorPalitr);
                     System.out.println(filtrLaptop);
-                    System.out.println("Введите следующий параметр");
+                    System.out.println("Выберите следующий параметр или выведите результат поиска (цифра 9)");
                     command = scanner.nextLine();
                     break;
                 case "5":
@@ -76,11 +77,11 @@ public class Store {
                     String videoCardModel = scanner.nextLine();
                     filtrLaptop.setVideoCard(videoCardModel);
                     System.out.println(filtrLaptop);
-                    System.out.println("Введите следующий параметр");
+                    System.out.println("Выберите следующий параметр или выведите результат поиска (цифра 9)");
                     command = scanner.nextLine();
                 case "6":
                     TheWholeRange(laptops);
-                    System.out.println("Введите следующий параметр");
+                    System.out.println("Выберите следующий параметр или выведите результат поиска (цифра 9)");
                     command = scanner.nextLine();
                     break;
                 case "7":
@@ -90,7 +91,7 @@ public class Store {
                     filtrLaptop.setColor(null);
                     filtrLaptop.setVideoCard(null);
                     System.out.println(filtrLaptop);
-                    System.out.println("Введите следующий параметр");
+                    System.out.println("Выберите следующий параметр или выведите результат поиска (цифра 9)");
                     command = scanner.nextLine();
                     break;
                 case "8":
@@ -107,6 +108,7 @@ public class Store {
         }
         scanner.close();
         System.out.println(filtrLaptop);
+        laptopTheFilter(laptops);
 
     }
 
@@ -127,6 +129,13 @@ public class Store {
                 }
             }
         }
+        if (result.isEmpty()) {
+            System.out.println("По выбранным параметрам ноутбук отсутствует");
+        } else {
+            System.out.println("По вашим параметрам найдены следующие ноутбуки");
+            TheWholeRange(result);
+        }
+        System.out.println("Надеюсь мы смогли Вам помочь с поиском");
     }
 
     // Создаю метод для вывода параметров
