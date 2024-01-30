@@ -8,7 +8,10 @@ import java.util.Set;
 
 public class Store {
 
-    private static LaptopClass filtrLaptop = new LaptopClass(null, 0, 0, null, null, null);
+    private static LaptopClass filtrLaptop = new LaptopClass(null, 0, 0, null, null, null); // Создаем экземляр для
+                                                                                            // наполнения его
+                                                                                            // праметрами, который
+                                                                                            // выбрал пользователь
 
     public static void main(String[] args) {
 
@@ -27,6 +30,8 @@ public class Store {
 
     }
 
+    // Создаю метод для выбора параметров пользователм и добаления данных параметров
+    // в экземпляр
     public static void filter(Set<LaptopClass> laptops) {
         parameters();
         Scanner scanner = new Scanner(System.in);
@@ -101,8 +106,30 @@ public class Store {
             }
         }
         scanner.close();
+        System.out.println(filtrLaptop);
+
     }
 
+    // Добавляю метод для проверки параметров по фильтру
+    public static void laptopTheFilter(Set<LaptopClass> laptops) {
+        Set<LaptopClass> result = new HashSet<>();
+        for (LaptopClass laptop : laptops) {
+            if (filtrLaptop.getRam() <= laptop.getRam() || filtrLaptop.getRam() == 0) {
+                if (filtrLaptop.getHarddisk() <= laptop.getHarddisk() || filtrLaptop.getHarddisk() == 0) {
+                    if (filtrLaptop.getOS().equals(laptop.getOS()) || filtrLaptop.getOS().equals("null")) {
+                        if (filtrLaptop.getColor().equals(laptop.getColor()) || filtrLaptop.getColor().equals("null")) {
+                            if (filtrLaptop.getVideoCard().equals(laptop.getVideoCard())
+                                    || filtrLaptop.getVideoCard().equals("null")) {
+                                result.add(laptop);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Создаю метод для вывода параметров
     public static void parameters() {
         System.out.println(
                 "Если Вам необходим нооутбук с конкретными параметрами, то пожалуйста выберите цифру, соответсвующего параметра:");
@@ -117,6 +144,7 @@ public class Store {
         System.out.println("9) Выввести результат");
     }
 
+    // Создаю метод для вывода всех имеющихся товаров
     public static void TheWholeRange(Set<LaptopClass> laptops) {
         System.out.println("Представляем Вашему вниманию весь ассортимент нашего товара: ");
         System.out.println();
