@@ -1,19 +1,28 @@
 package HardwareStore;
 
+import java.util.Objects;
+
 public class LaptopClass {
-    
+
+    private String name;
     private int ram;
     private int harddisk;
     private String OS;
     private String color;
     private String videoCard;
+    private LaptopClass o;
 
-    public LaptopClass (int ram, int harddisk, String OS, String color, String videoCard) {
+    public LaptopClass(String name, int ram, int harddisk, String OS, String color, String videoCard) {
+        this.name = name;
         this.ram = ram;
         this.harddisk = harddisk;
         this.OS = OS;
         this.color = color;
         this.videoCard = videoCard;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getRam() {
@@ -36,6 +45,10 @@ public class LaptopClass {
         return videoCard;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setRam(int ram) {
         this.ram = ram;
     }
@@ -54,5 +67,26 @@ public class LaptopClass {
 
     public void setVideoCard(String videoCard) {
         this.videoCard = videoCard;
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        LaptopClass laptop = (LaptopClass) obj;
+        return Objects.equals(name, laptop.name) && ram == laptop.ram && harddisk == laptop.harddisk && Objects.equals(OS, laptop.OS) && Objects.equals(color, laptop.color)
+                && Objects.equals(videoCard, laptop.videoCard);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, ram, harddisk, OS, color, videoCard);
     }
 }
